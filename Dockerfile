@@ -1,15 +1,1 @@
-FROM node:20-slim
-
-WORKDIR /app
-
-COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
-
-COPY tsconfig.json ./
-COPY src/ ./src/
-
-RUN npm run build
-
-EXPOSE 3000
-
-CMD ["node", "dist/index.js"]
+Set-Content -Path Dockerfile -Value "FROM node:20-slim`n`nWORKDIR /app`n`nCOPY package.json package-lock.json* ./`nRUN npm ci`n`nCOPY tsconfig.json ./`nCOPY src/ ./src/`n`nRUN npm run build`n`nRUN npm prune --omit=dev`n`nEXPOSE 3000`n`nCMD [""node"", ""dist/index.js""]"
